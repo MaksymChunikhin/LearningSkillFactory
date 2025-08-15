@@ -1,15 +1,11 @@
 import random
 
-def guess_number():
-    number = random.randint(1, 100)  # загаданное число
-    low = 1
-    high = 100
+def guess_number(number):
+    low, high = 1, 100
     attempts = 0
-    
     while True:
-        guess = (low + high) // 2
         attempts += 1
-        
+        guess = (low + high) // 2
         if guess == number:
             return attempts
         elif guess < number:
@@ -17,11 +13,6 @@ def guess_number():
         else:
             high = guess - 1
 
-# Прогоняем много раз, чтобы узнать среднее количество попыток
-trials = 1000
-total_attempts = 0
-
-for _ in range(trials):
-    total_attempts += guess_number()
-
-print(f"Среднее количество попыток за {trials} игр: {total_attempts / trials:.2f}")
+random.seed(42)  # фиксируем генератор случайных чисел
+attempts_list = [guess_number(random.randint(1, 100)) for _ in range(1000)]
+print(f"Среднее количество попыток: {sum(attempts_list)/1000:.2f}")
