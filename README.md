@@ -1,4 +1,4 @@
-# LearningSkillFactory
+# Learning Skill Factory
 
 # Guess the Number Game
 
